@@ -7,8 +7,19 @@ function App() {
   // Fungsi untuk mengambil data dari Backend Node.js/Python
   const fetchAlerts = async () => {
     try {
-      // Gunakan localhost untuk frontend membaca backend di komputer yang sama
-      const response = await fetch('http://localhost:3000/api/alerts')
+      const response = await fetch('https://pentahydrated-jenniffer-unstupid.ngrok-free.dev/api/alerts', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          // 💡 WAJIB Ditambahkan: Melewati halaman peringatan/intersepsi browser milik ngrok
+          'ngrok-skip-browser-warning': 'true'
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
       const data = await response.json()
       setAlerts(data)
     } catch (error) {

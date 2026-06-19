@@ -3,7 +3,13 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json()); // Parsing JSON dari TradingView
-app.use(cors()); // Mengizinkan React Vite mengakses API ini
+//app.use(cors()); // Mengizinkan React Vite mengakses API ini
+// 🔥 PERBAIKAN DI SINI: Konfigurasi CORS yang lebih spesifik untuk ngrok & custom header
+app.use(cors({
+    origin: '*', // Mengizinkan akses dari origin mana pun (termasuk localhost:5175)
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'ngrok-skip-browser-warning'] // Izinkan header ngrok
+}));
 
 let alertsData = []; // Database sementara di RAM
 
