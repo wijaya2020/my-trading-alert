@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
@@ -180,5 +182,30 @@
   &::after {
     right: 0;
     border-right-color: var(--border);
+  }
+}
+
+/* Layout untuk Halaman Analysis TradingView */
+.analysis-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr; /* Membagi jadi 2 kolom */
+  grid-gap: 32px;
+}
+
+.span-full {
+  grid-column: span 2; /* Mengisi penuh 2 kolom */
+  width: 100%;
+}
+
+.span-half {
+  grid-column: span 1; /* Mengisi 1 kolom (setengah layar) */
+  width: 100%;
+}
+
+/* Di HP/Layar kecil, yang setengah layar jadi full layar */
+@media (max-width: 800px) {
+  .span-half {
+      grid-column: span 2;
   }
 }

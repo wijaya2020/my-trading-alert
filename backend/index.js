@@ -1,5 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+
+// Mengarahkan dotenv secara presisi ke file .env yang berada di root folder (di luar folder backend)
+//require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+// Mengarahkan dotenv secara presisi ke file .env yang berada di dalam folder backend
+require('dotenv').config();
+// memastikan .env berhasil di panggil
+// console.log(`Your URL is ${process.env.URL}`)
 
 const app = express();
 app.use(express.json()); // Parsing JSON dari TradingView
@@ -31,5 +39,5 @@ app.get('/api/alerts', (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('Backend Node.js berjalan di http://localhost:3000');
+    console.log(`Backend Node.js berjalan di ${process.env.URL}`);
 });
