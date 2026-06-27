@@ -15,9 +15,9 @@ vercel url :
 https://my-trading-alert.vercel.app/
 
 
-to test kirim data json via postman:
+to test send data json via postman:
 method : POST
-body : raw > json
+body : raw (format json)
 
 {
     "symbol": "IDX:BBCA",

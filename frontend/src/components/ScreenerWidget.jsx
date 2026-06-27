@@ -50,7 +50,7 @@ function ScreenerWidget({ type = 'us', colorTheme = "light"  }) {
       defaultScreen: currentConfig.defaultScreen,
       isTransparent: false,
       locale: "en",
-      colorTheme: "${colorTheme}",
+      colorTheme: colorTheme,
       width: "100%",
       height: 550
     });
